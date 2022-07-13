@@ -5,8 +5,8 @@ import styled from 'styled-components'
 
 const ContenedorButCard = styled.div`
     background-color: hsl(217, 19%, 24%);
-    width: 40%;
-    height: 40%;
+    width: 350px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,7 +16,22 @@ const ContenedorButCard = styled.div`
     border-radius: 10px;
     font-family: 'Manrope', sans-serif;
     font-weight: 600;
-    
+    box-shadow: 8px 8px 15px 1px black;
+    @media (min-width: 360px) {
+        width: 380px;
+        height: 380px;
+//        background-color: red;
+    }
+    @media (min-width: 600px) {
+        width: 550px;
+        height: 350px;
+//        background-color: green;
+    }
+    @media (min-width: 900px) {
+        width: 750px;
+        height: 450px;
+//        background-color: beige;
+    }
 `
 const ContenedorTexto = styled.div`
     display: flex;
@@ -29,11 +44,29 @@ const ContenedorTexto = styled.div`
 `
 const Titulo = styled.h3`
 color:  hsl(150, 100%, 66%);
-    font-size: 18px;
+    font-size: 13px;
     margin-top: 9%;
+    @media (min-width: 360px) {
+        font-size: 15px;
+    }
+    @media (min-width: 600px) {
+        font-size: 16px;
+    }
+    @media (min-width: 900px) {
+        font-size: 18px;
+    }
 `
 const Frase = styled.p`
-    font-size: 28px;
+    font-size: 22px;
+    @media (min-width: 360px) {
+        font-size: 23px;
+    }
+    @media (min-width: 600px) {
+        font-size: 25px;
+    }
+    @media (min-width: 900px) {
+        font-size: 28px;
+    }
 `
 const ContenedorLinea = styled.div`
     width: 100%;
@@ -77,7 +110,6 @@ const Lineas2 = styled.div`
     width: 5px;
     border-radius: 25%;
 `
-
 const Boton = styled.button`
     display: flex;
     justify-content: center;
@@ -115,20 +147,36 @@ const Punto = styled.div`
 //Componente CARD
 
 function Card({state, onSubmit}) {
-
-    return (
-    <ContenedorButCard>
-        <ContenedorTexto>
-            <Titulo>ADVICE #{state.id}</Titulo>
-            <Frase>"{state.advice}"</Frase>
-        </ContenedorTexto>
-        <ContenedorLinea>
-        <Linea></Linea>
-        <Circulo><Lineas></Lineas><Lineas2></Lineas2></Circulo>
-        </ContenedorLinea>
-        <Boton type="button" onClick={onSubmit}><Cuadrado><Punto></Punto></Cuadrado></Boton>
-    </ContenedorButCard>
-    )
+    if(state.id === undefined){
+        return (
+            <ContenedorButCard>
+                <ContenedorTexto>
+                    <Titulo>ADVICE # 128</Titulo>
+                    <Frase>"When you're at a concert or event, enjoy the moment, enjoy being there. Try leaving your camera in your pocket."</Frase>
+                </ContenedorTexto>
+                <ContenedorLinea>
+                    <Linea></Linea>
+                    <Circulo><Lineas></Lineas><Lineas2></Lineas2></Circulo>
+                </ContenedorLinea>
+                <Boton type="button" onClick={onSubmit}><Cuadrado><Punto></Punto></Cuadrado></Boton>
+            </ContenedorButCard>
+        )
+    }else {
+        return (
+            <ContenedorButCard>
+                <ContenedorTexto>
+                    <Titulo>ADVICE # {state.id}</Titulo>
+                    <Frase>"{state.advice}"</Frase>
+                </ContenedorTexto>
+                <ContenedorLinea>
+                    <Linea></Linea>
+                    <Circulo><Lineas></Lineas><Lineas2></Lineas2></Circulo>
+                </ContenedorLinea>
+                <Boton type="button" onClick={onSubmit}><Cuadrado><Punto></Punto></Cuadrado></Boton>
+            </ContenedorButCard>
+            )
+    }
+    
 }
 
 export default Card;

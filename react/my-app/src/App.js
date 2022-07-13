@@ -27,7 +27,7 @@ function App() {
           advice: response_json.slip.advice
         }
         setState(frase)
-        console.log(frase);
+//        console.log(frase);
       }   
     })
     .catch(e => console.log(e));
